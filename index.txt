@@ -1,0 +1,61 @@
+<!-- UserHeader.hbm.xml -->
+<hibernate-mapping>
+    <class name="duongchaptien.UserHeader" table="UserHeader">
+        <composite-id>
+            <key-property name="psd" type="long" column="PSD" />
+            <key-property name="headerId" type="int" column="HeaderId" />
+        </composite-id>
+        <property name="position" type="int" column="position" />
+        <property name="isHidden" type="string" column="isHidden" />
+
+        <!-- Many-to-one association with User -->
+        <many-to-one name="user" class="duongchaptien.User" insert="false" update="false">
+            <column name="PSD" />
+        </many-to-one>
+
+        <!-- Many-to-one association with Header -->
+        <many-to-one name="header" class="duongchaptien.Header" insert="false" update="false">
+            <column name="HeaderId" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
+
+
+		// UserHeader.java
+package duongchaptien;
+
+public class UserHeader {
+    private long psd;
+    private int headerId;
+    private int position;
+    private String isHidden;
+    private User user;
+    private Header header;
+
+    // Các phương thức getter và setter
+}
+
+
+		<!-- Trong trang JSP -->
+<html>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Header Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <logic:iterate id="userHeader" name="userHeaders">
+                <tr>
+                    <td><bean:write name="userHeader" property="user.psd" /></td>
+                    <td><bean:write name="userHeader" property="user.name" /></td>
+                    <td><bean:write name="userHeader" property="header.headerName" /></td>
+                </tr>
+            </logic:iterate>
+        </tbody>
+    </table>
+</body>
+</html>
