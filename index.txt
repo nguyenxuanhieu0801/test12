@@ -1,65 +1,41 @@
-public ActionForward ajaxMethod(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		// Xử lý logic và trả về dữ liệu
-		String responseData = "Hello from server!";
-		response.setContentType("text/plain");
-		response.getWriter().write(responseData);
-		return null; // Không chuyển hướng đến trang nào
-	}
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	<Appenders>
+		<!-- Console Appender -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5level] %d{dd-MM-yyyy HH:mm:ss} %c{1} - %msg%n" />
+		</Console>
 
+		<!-- File Appender -->
+		<File name="SystemLog" >
+			<PatternLayout
+				pattern="[%-5level] %d{dd-MM-yyyy HH:mm:ss} %c{1} - %msg%n" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</File>
+		
+		 <File name="SqlLog" fileName="D:/sql_%d{MM/dd/yyyy}.log">
+            <PatternLayout
+				pattern="[%-5level] %d{dd-MM-yyyy HH:mm:ss} %c{1} - %msg%n" />
+        </File>
+	</Appenders>
 
+	<Loggers>
+		<Logger name="com.nxh.action" level="debug" additivity="false">
+			<AppenderRef ref="SystemLog" />
+		</Logger>
+		
+		  <Logger name="com.nxh.dao" level="debug" additivity="false">
+            <AppenderRef ref="SqlLog"/>
+        </Logger>
 
-function debounce(func, wait) {
-	    let timeout;
-
-	    return function () {
-	        const context = this;
-	        const args = arguments;
-
-	        const later = function () {
-	            timeout = null;
-	            func.apply(context, args);
-	        };
-
-	        clearTimeout(timeout);
-	        timeout = setTimeout(later, wait);
-	    };
-	}
-	
-	const debounceSubmit = debounce(function () {
-        document.getElementById('loginForm').submit();
-    }, 5000); // 1000 milliseconds debounce
-	
-	function handleLoginFormSubmit() {
-        debounceSubmit();
-        return false;
-    }
-	
-	
-	 function submitForm() {
-         // Lấy ra form và gọi hàm submit()
-         
-         form.submit();
-     }
-
-	
-	 $(document).ready(function () {
-		 
-		 $("#form1").submit(() => {
-			 
-		 })
-		 
-         $("#btn-1").click(function (e) {
-             $.ajax({
-                 type: "POST",
-                 url: "test-ports.do",
-                 data: { 
-                	 method: "ajaxMethod" 
-                }, 
-                 success: function (data) {
-                	 
-                	 console.log(data)
-                 }
-             });
-         });
-     });
+		<!-- Root Logger -->
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>
