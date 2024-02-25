@@ -1,1 +1,8 @@
-https://stackoverflow.com/questions/53668481/max-log-file-size-in-log4j-1-2-17-with-properties
+Nuxt tận dụng component <Transition> của Vue để áp dụng chuyển tiếp giữa các trang và bố cục
+
+Page transitions
+
+You can enable page transitions to apply an automatic transition for all your pages.
+
+Bạn có thể bật chuyển tiếp trang để áp dụng chuyển đổi tự động cho tất cả các trang của mình .
+https://dev.to/jacobandrewsky/improving-performance-of-nuxt-with-nuxtimage-1ai0
