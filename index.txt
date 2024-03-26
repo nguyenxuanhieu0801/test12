@@ -1,8 +1,1 @@
-Nuxt tận dụng component <Transition> của Vue để áp dụng chuyển tiếp giữa các trang và bố cục
-
-Page transitions
-
-You can enable page transitions to apply an automatic transition for all your pages.
-
-Bạn có thể bật chuyển tiếp trang để áp dụng chuyển đổi tự động cho tất cả các trang của mình .
-https://dev.to/jacobandrewsky/improving-performance-of-nuxt-with-nuxtimage-1ai0
+https://drive.google.com/drive/folders/12IaCnja_J9XRJXe3xI5yNLHjakTb71e3
